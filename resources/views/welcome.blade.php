@@ -9,7 +9,7 @@
   <meta name="description" content="" />
   <meta name="keywords" content="" />
   <!-- Page Title -->
-  <title>Limty - Multipurpose Business HTML Template</title>
+  <title>Reseller App</title>
   <!-- Favicon Icon -->
   <link rel="icon" href="/lp/assets/img/favicon.png" />
   <!-- Stylesheets -->

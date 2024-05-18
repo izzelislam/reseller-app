@@ -15,15 +15,21 @@ class LandingPageController extends Controller
 
         $setting = Setting::first();
     
-        if ($setting->show_landing_page == 1) {
+        if (!empty($setting->show_landing_page)) {
 
-            $total_reseller = User::where('role', 'customer')->count();
-            $total_sales    = Sale::sum('qty');
-            $total_products = Product::count();
+            if ($setting->show_landing_page == 1){
+                $total_reseller = User::where('role', 'customer')->count();
+                $total_sales    = Sale::sum('qty');
+                $total_products = Product::count();
+    
+                $products = Product::take(6)->get();
+    
+                return view('welcome', compact('total_reseller', 'total_sales', 'total_products', 'products', 'setting'));
+            }else{
 
-            $products = Product::take(6)->get();
+                return redirect()->intended("/login");
+            }
 
-            return view('welcome', compact('total_reseller', 'total_sales', 'total_products', 'products', 'setting'));
         }else{
             return redirect()->intended("/login");
         }
